@@ -62,13 +62,13 @@ def create_entry():
         body=form.body.data,
         is_published=form.is_published.data
         )
-    return create_or_edit_entry(entry_id, entry, form)
+    return create_entry_oredit_entry(entry_id, entry, form)
 
 
 @app.route("/edit-post/<int:entry_id>", methods=['GET', 'POST'])
 def edit_entry(entry_id):
     entry = Entry.query.filter_by(id=entry_id).first_or_404()
     form = EntryForm(obj=entry)
-    return create_or_edit_entry(entry_id, entry, form)
+    return create_entry_oredit_entry(entry_id, entry, form)
     
 
